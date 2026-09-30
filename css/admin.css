@@ -1,0 +1,283 @@
+/* ============================================
+   KAYOLE DIGITAL HUB — Admin Dashboard Styles
+   ============================================ */
+
+.dashboard-page {
+  background: var(--grey-light);
+  padding: 48px 0;
+  min-height: calc(100vh - 200px);
+}
+
+/* ---------- HEADER ---------- */
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.dash-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
+/* ---------- SUMMARY STATS ---------- */
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.dash-stat {
+  background: var(--white);
+  padding: 28px 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border-top: 4px solid var(--teal);
+  transition: transform 0.15s;
+}
+
+.dash-stat:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.dash-stat-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.03em;
+}
+
+.dash-stat-label {
+  color: var(--grey-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ---------- TABS ---------- */
+.dash-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid #e0e4eb;
+  margin-bottom: 24px;
+}
+
+.dash-tab {
+  background: none;
+  border: none;
+  padding: 14px 26px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--grey-text);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.dash-tab:hover {
+  color: var(--navy);
+}
+
+.dash-tab.active {
+  color: var(--navy);
+  border-bottom-color: var(--teal);
+}
+
+/* ---------- FILTERS ---------- */
+.dash-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.dash-filters input,
+.dash-filters select {
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--grey-text);
+  background: var(--white);
+  border: 1.5px solid #d5d9e2;
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dash-filters input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.dash-filters input:focus,
+.dash-filters select:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(22, 199, 154, 0.15);
+}
+
+/* ---------- TABLE ---------- */
+.dash-table-wrapper {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+}
+
+.dash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 700px;
+}
+
+.dash-table thead tr {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.dash-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.dash-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #eef1f6;
+  color: var(--grey-text);
+}
+
+.dash-table tbody tr:hover {
+  background: #f9fafc;
+}
+
+.dash-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status pill */
+.status-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-pill.pending {
+  background: #fff3cd;
+  color: #8a6d3b;
+}
+
+.status-pill.confirmed {
+  background: #d4f5e8;
+  color: #0e7a5a;
+}
+
+.status-pill.completed {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+/* ---------- EMPTY STATE ---------- */
+.dash-empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--grey-text);
+}
+
+.dash-empty h3 {
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 700px) {
+  .dash-header {
+    flex-direction: column;
+  }
+  .dash-stat-number {
+    font-size: 1.8rem;
+  }
+  .dash-filters {
+    flex-direction: column;
+  }
+  .dash-filters input,
+  .dash-filters select,
+  .dash-filters button {
+    width: 100%;
+  }
+}
+/* ---------- STUDENT / DONOR CTA BLOCK ---------- */
+.student-cta {
+  margin-top: 48px;
+  padding: 32px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  border-radius: 12px;
+  color: #fff;
+}
+
+.student-cta h2 {
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.student-cta p {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 20px;
+}
+/* ---------- CONTACT ACTION BUTTONS ---------- */
+.contact-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1.5px solid #d5d9e2;
+  background: var(--white);
+  color: var(--navy);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s;
+  text-decoration: none;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+}
+
+.contact-btn.email:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--white);
+}
+
+.contact-btn.whatsapp:hover {
+  background: #25D366;
+  border-color: #25D366;
+  color: var(--white);
+}
+
+.contact-btn svg {
+  display: block;
+}

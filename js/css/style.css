@@ -1,0 +1,438 @@
+/* ============================================
+   KAYOLE DIGITAL HUB — Main Stylesheet
+   Colours match the project PowerPoint theme
+   ============================================ */
+
+/* ---------- 1. VARIABLES ---------- */
+:root {
+  --navy: #1a1a6c;
+  --navy-deep: #0f0f4a;
+  --teal: #16c79a;
+  --teal-dark: #0e9e7a;
+  --white: #ffffff;
+  --grey-light: #f4f6f9;
+  --grey-mid: #e5e7eb;
+  --grey-text: #4a4a6a;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --radius: 10px;
+  --radius-lg: 16px;
+}
+
+/* ---------- 2. RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ---------- 3. BASE ---------- */
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--grey-text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 {
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2.8rem; font-weight: 800; }
+h2 { font-size: 2rem; font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+
+p { margin-bottom: 1em; }
+
+a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--teal); }
+
+/* ---------- 4. NAVBAR ---------- */
+.navbar {
+  background: var(--navy);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.logo:hover { color: var(--white); }
+
+.logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: var(--teal);
+}
+
+.btn-nav {
+  background: var(--teal);
+  color: var(--navy) !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600 !important;
+  transition: background 0.2s;
+}
+
+.btn-nav:hover {
+  background: var(--teal-dark);
+  color: var(--white) !important;
+}
+
+/* ---------- 5. HERO ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: var(--white);
+  padding: 100px 0 120px;
+  text-align: center;
+}
+
+.hero h1 {
+  color: var(--white);
+  font-size: 3.4rem;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.tagline {
+  color: var(--teal);
+  font-weight: 700;
+  letter-spacing: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero-sub {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.15rem;
+  max-width: 640px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.1s, color 0.2s;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: var(--navy);
+}
+
+.btn-primary:hover {
+  background: var(--teal-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn-secondary:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: translateY(-2px);
+}
+
+/* ---------- 6. ABOUT ---------- */
+.about {
+  padding: 90px 0;
+  background: var(--white);
+}
+
+.about .lead {
+  font-size: 1.15rem;
+  max-width: 800px;
+  margin-bottom: 48px;
+  color: var(--grey-text);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.about-item {
+  padding: 28px;
+  background: var(--grey-light);
+  border-radius: var(--radius);
+  border-top: 4px solid var(--teal);
+}
+
+.about-item h3 {
+  color: var(--navy);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.about-item p {
+  font-size: 0.95rem;
+  color: var(--grey-text);
+  margin-bottom: 0;
+}
+
+/* ---------- 7. IMPACT ---------- */
+.impact {
+  background: var(--grey-light);
+  padding: 90px 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.stat {
+  background: var(--white);
+  padding: 36px 20px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--teal);
+  transition: transform 0.2s;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -0.03em;
+}
+
+.stat-label {
+  color: var(--grey-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ---------- 8. TRACKS ---------- */
+.tracks {
+  padding: 90px 0;
+}
+
+.section-intro {
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin-bottom: 12px;
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.track-card {
+  background: var(--white);
+  padding: 36px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--teal);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.track-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.track-card h3 {
+  color: var(--navy);
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+
+.track-meta {
+  color: var(--teal-dark);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- 9. CALL TO ACTION ---------- */
+.cta {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: var(--white);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.cta h2 {
+  color: var(--white);
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.cta p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+}
+
+/* ---------- 10. FOOTER ---------- */
+.footer {
+  background: var(--navy-deep);
+  color: var(--white);
+  padding: 50px 0 40px;
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.footer p {
+  margin: 4px 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-brand {
+  color: var(--white) !important;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 8px !important;
+}
+
+/* ---------- 11. RESPONSIVE ---------- */
+@media (max-width: 700px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero { padding: 70px 0 80px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 0.85rem; }
+  .logo { font-size: 1rem; gap: 8px; }
+  .logo-img { width: 36px; height: 36px; }
+  h2 { font-size: 1.6rem; }
+  .stat-number { font-size: 2.2rem; }
+  .footer-container { grid-template-columns: 1fr; text-align: center; }
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- 12. THANK YOU PAGE ---------- */
+.thankyou-page {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  background: var(--grey-light);
+}
+
+.thankyou-container {
+  max-width: 520px;
+  text-align: center;
+  background: var(--white);
+  padding: 60px 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.thankyou-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 44px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+}
+
+.thankyou-container h1 {
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+
+.thankyou-container p {
+  color: var(--grey-text);
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.thankyou-container .btn-primary {
+  margin-top: 24px;
+}

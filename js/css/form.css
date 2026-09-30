@@ -1,0 +1,401 @@
+/* ============================================
+   KAYOLE DIGITAL HUB — Form Stylesheet
+   ============================================ */
+
+.form-page {
+  min-height: calc(100vh - 160px);
+  background: var(--grey-light);
+  padding: 60px 0;
+}
+
+.form-container {
+  max-width: 640px;
+  background: var(--white);
+  padding: 48px 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.form-intro {
+  text-align: center;
+  color: var(--grey-text);
+  margin-bottom: 36px;
+  font-size: 0.95rem;
+}
+
+/* ---------- ROLE SELECTOR ---------- */
+.role-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.role-btn {
+  background: var(--white);
+  border: 2px solid #d5d9e2;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s, transform 0.1s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.role-btn:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.role-btn.active {
+  border-color: var(--teal);
+  background: #eafaf5;
+  box-shadow: 0 0 0 3px rgba(22, 199, 154, 0.15);
+}
+
+.role-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.role-label {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1rem;
+}
+
+.role-sub {
+  font-size: 0.85rem;
+  color: var(--grey-text);
+}
+
+/* ---------- FORM FIELDS ---------- */
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.form-group .required {
+  color: #e63946;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--grey-text);
+  background: var(--white);
+  border: 1.5px solid #d5d9e2;
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(22, 199, 154, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* ---------- SUBMIT BUTTON ---------- */
+.form-submit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 8px;
+}
+
+/* ---------- STATUS MESSAGE ---------- */
+.form-status {
+  margin-top: 18px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+  display: none;
+}
+
+.form-status.success {
+  display: block;
+  background: #d4f5e8;
+  color: #0e7a5a;
+  border-left: 4px solid var(--teal-dark);
+}
+
+.form-status.error {
+  display: block;
+  background: #fde0e2;
+  color: #a42030;
+  border-left: 4px solid #e63946;
+}
+
+/* ---------- FOOTER LINK ---------- */
+.form-footer-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.95rem;
+  color: var(--grey-text);
+}
+
+.form-footer-link a {
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.form-footer-link a:hover {
+  color: var(--teal);
+}
+
+/* ============================================
+   CONFIRMATION MODAL
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 74, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal-box h2 {
+  color: var(--navy);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.modal-sub {
+  text-align: center;
+  color: var(--grey-text);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+.modal-summary {
+  background: var(--grey-light);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+
+.modal-summary .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e4eb;
+  gap: 16px;
+}
+
+.modal-summary .row:last-child {
+  border-bottom: none;
+}
+
+.modal-summary .label {
+  color: var(--grey-text);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.modal-summary .value {
+  color: var(--navy);
+  font-weight: 600;
+  text-align: right;
+  word-break: break-word;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-secondary-modal {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid #d5d9e2;
+  padding: 12px 26px;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-secondary-modal:hover {
+  border-color: var(--navy);
+  background: var(--grey-light);
+}
+
+/* ============================================
+   SPLIT PAGE LAYOUT (Register page)
+   ============================================ */
+
+.split-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 76px);
+}
+
+.split-visual {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 60px;
+}
+
+.split-visual-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(26, 26, 108, 0.35), rgba(15, 15, 74, 0.85));
+  z-index: 1;
+}
+
+.split-visual h2,
+.split-visual p {
+  position: relative;
+  z-index: 2;
+  color: var(--white);
+}
+
+.split-visual h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.split-visual p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  max-width: 360px;
+  margin: 0;
+}
+
+.split-form {
+  background: var(--white);
+  padding: 60px 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.form-container-inner {
+  width: 100%;
+  max-width: 520px;
+}
+
+.form-container-inner h1 {
+  font-size: 1.9rem;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.form-container-inner .form-intro {
+  text-align: left;
+  margin-bottom: 32px;
+  color: var(--grey-text);
+  font-size: 0.95rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+  .split-page {
+    grid-template-columns: 1fr;
+  }
+  .split-visual {
+    min-height: 280px;
+    padding: 40px;
+  }
+  .split-visual h2 {
+    font-size: 1.5rem;
+  }
+  .split-form {
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 32px 22px;
+  }
+  .role-selector {
+    grid-template-columns: 1fr;
+  }
+  .modal-box {
+    padding: 28px 22px;
+  }
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+  .modal-actions button {
+    width: 100%;
+  }
+}

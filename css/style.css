@@ -1,0 +1,576 @@
+/* ============================================
+   KAYOLE DIGITAL HUB — Main Stylesheet
+   Colours match the project PowerPoint theme
+   ============================================ */
+
+/* ---------- 1. VARIABLES ---------- */
+:root {
+  --navy: #1a1a6c;
+  --navy-deep: #0f0f4a;
+  --teal: #16c79a;
+  --teal-dark: #0e9e7a;
+  --white: #ffffff;
+  --grey-light: #f4f6f9;
+  --grey-mid: #e5e7eb;
+  --grey-text: #4a4a6a;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --radius: 10px;
+  --radius-lg: 16px;
+}
+
+/* ---------- 2. RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ---------- 3. BASE ---------- */
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--grey-text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 {
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2.8rem; font-weight: 800; }
+h2 { font-size: 2rem; font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+
+p { margin-bottom: 1em; }
+
+a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--teal); }
+
+/* ---------- 4. NAVBAR ---------- */
+.navbar {
+  background: var(--navy);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.logo:hover { color: var(--white); }
+
+.logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: var(--teal);
+}
+
+.btn-nav {
+  background: var(--teal);
+  color: var(--navy) !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600 !important;
+  transition: background 0.2s;
+}
+
+.btn-nav:hover {
+  background: var(--teal-dark);
+  color: var(--white) !important;
+}
+
+/* ---------- 5. HERO ---------- */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: var(--white);
+  padding: 120px 0 140px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-image {
+  background-image: url('../assets/images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(26, 26, 108, 0.88), rgba(15, 15, 74, 0.78));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  color: var(--white);
+  font-size: 3.4rem;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.tagline {
+  color: var(--teal);
+  font-weight: 700;
+  letter-spacing: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero-sub {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.15rem;
+  max-width: 640px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- 6. BUTTONS ---------- */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.1s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: var(--navy);
+  border: 2px solid var(--teal);
+}
+
+.btn-primary:hover {
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-secondary:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: translateY(-2px);
+}
+
+/* ---------- 7. ABOUT ---------- */
+.about {
+  padding: 90px 0;
+  background: var(--white);
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
+
+.about-text .lead {
+  font-size: 1.15rem;
+  margin-bottom: 32px;
+  color: var(--grey-text);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.about-item {
+  padding: 20px;
+  background: var(--grey-light);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--teal);
+}
+
+.about-item h3 {
+  color: var(--navy);
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.about-item p {
+  font-size: 0.9rem;
+  color: var(--grey-text);
+  margin-bottom: 0;
+}
+
+/* ---------- 8. IMPACT ---------- */
+.impact {
+  background: var(--grey-light);
+  padding: 90px 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.stat {
+  background: var(--white);
+  padding: 36px 20px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--teal);
+  transition: transform 0.2s;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -0.03em;
+}
+
+.stat-label {
+  color: var(--grey-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ---------- 9. TRACKS ---------- */
+.tracks {
+  padding: 90px 0;
+}
+
+.section-intro {
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin-bottom: 12px;
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.track-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.track-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.track-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.track-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.track-card:hover .track-image img {
+  transform: scale(1.05);
+}
+
+.track-body {
+  padding: 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.track-card h3 {
+  color: var(--navy);
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+
+.track-meta {
+  color: var(--teal-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- 10. CALL TO ACTION ---------- */
+.cta {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: var(--white);
+  padding: 90px 0;
+  text-align: center;
+}
+
+.cta h2 {
+  color: var(--white);
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.cta p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+}
+
+/* ---------- 11. FOOTER ---------- */
+.footer {
+  background: var(--navy-deep);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 70px 0 0;
+  font-size: 0.9rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.5fr 1.5fr;
+  gap: 40px;
+  padding-bottom: 50px;
+}
+
+.footer-col p {
+  margin: 4px 0;
+}
+
+.footer-brand {
+  color: var(--white) !important;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 10px !important;
+}
+
+.footer-heading {
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px !important;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--teal);
+}
+
+.footer-contact {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-contact svg {
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.footer-contact a {
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s;
+}
+
+.footer-contact a:hover {
+  color: var(--teal);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ---------- 12. RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .about-layout,
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero { padding: 80px 0 90px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 0.85rem; }
+  .logo { font-size: 1rem; gap: 8px; }
+  .logo-img { width: 36px; height: 36px; }
+  h2 { font-size: 1.6rem; }
+  .stat-number { font-size: 2.2rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .tracks-grid { grid-template-columns: 1fr; }
+  .track-image { height: 180px; }
+}
+
+/* ---------- 13. THANK YOU PAGE ---------- */
+.thankyou-page {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  background: var(--grey-light);
+}
+
+.thankyou-container {
+  max-width: 520px;
+  text-align: center;
+  background: var(--white);
+  padding: 60px 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.thankyou-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 44px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+}
+
+.thankyou-container h1 {
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+
+.thankyou-container p {
+  color: var(--grey-text);
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.thankyou-container .btn-primary {
+  margin-top: 24px;
+}

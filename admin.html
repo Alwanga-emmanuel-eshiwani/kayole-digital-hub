@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Kayole Digital Hub</title>
+  <meta name="description" content="Admin dashboard for the Kayole Digital Hub.">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.jpeg" alt="Kayole Digital Hub logo" class="logo-img">
+        <span>Kayole Digital Hub</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html" class="btn-nav">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ LOGIN VIEW ============ -->
+  <main id="loginView" class="form-page">
+    <div class="container form-container">
+      <h1>Admin Login</h1>
+      <p class="form-intro">Sign in to manage applications and donations.</p>
+
+      <form id="loginForm" class="form">
+        <div class="form-group">
+          <label for="email">Email Address <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password <span class="required">*</span></label>
+          <input type="password" id="password" name="password" required>
+        </div>
+
+        <button type="submit" class="btn-primary form-submit">Sign In</button>
+
+        <p id="loginStatus" class="form-status"></p>
+      </form>
+    </div>
+  </main>
+
+  <!-- ============ DASHBOARD VIEW ============ -->
+  <main id="dashboardView" class="dashboard-page" style="display:none;">
+    <div class="container" style="max-width:1200px;">
+
+      <!-- Header -->
+      <div class="dash-header">
+        <div>
+          <h1 style="margin-bottom:4px;">Admin Dashboard</h1>
+          <p style="color:#4a4a6a;margin:0;">Welcome back. Here's what's happening.</p>
+        </div>
+        <button id="logoutBtn" class="btn-secondary-modal">Log out</button>
+      </div>
+
+      <!-- Summary cards -->
+      <div class="dash-stats">
+        <div class="dash-stat">
+          <div class="dash-stat-number" id="statStudents">0</div>
+          <div class="dash-stat-label">Student Applications</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-number" id="statDonors">0</div>
+          <div class="dash-stat-label">Donor Pledges</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-number" id="statAmount">KES 0</div>
+          <div class="dash-stat-label">Total Pledged</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-number" id="statPending">0</div>
+          <div class="dash-stat-label">Pending Review</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="dash-tabs">
+        <button class="dash-tab active" data-tab="students">Students</button>
+        <button class="dash-tab" data-tab="donors">Donors</button>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="dash-filters">
+        <input type="text" id="searchInput" placeholder="Search by name or email...">
+        <select id="trackFilter">
+          <option value="">All tracks</option>
+          <option value="Community Track">Community Track</option>
+          <option value="Pro Track">Pro Track</option>
+        </select>
+        <button id="exportBtn" class="btn-secondary-modal">Export CSV</button>
+      </div>
+
+      <!-- Table -->
+      <div class="dash-table-wrapper">
+        <table id="dataTable" class="dash-table">
+          <thead id="tableHead"></thead>
+          <tbody id="tableBody">
+            <tr><td style="text-align:center;padding:24px;color:#4a4a6a;">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div>
+        <p class="footer-brand">Kayole Digital Hub</p>
+        <p>Bridging the Digital Divide Through Sustainable Technology Training</p>
+      </div>
+      <div>
+        <p>Emmanuel Alwang'a Eshiwani · 221672</p>
+        <p>BSc. Computer Networks & Cybersecurity</p>
+        <p>Strathmore University · September 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="js/supabase.min.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

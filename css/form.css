@@ -1,0 +1,367 @@
+/* ============================================
+   KAYOLE DIGITAL HUB — Form Stylesheet
+   ============================================ */
+
+.form-page {
+  min-height: calc(100vh - 160px);
+  background: var(--grey-light);
+  padding: 60px 0;
+}
+
+.form-container {
+  max-width: 640px;
+  background: var(--white);
+  padding: 48px 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.form-intro {
+  text-align: center;
+  color: var(--grey-text);
+  margin-bottom: 36px;
+  font-size: 0.95rem;
+}
+
+/* ---------- ROLE SELECTOR ---------- */
+.role-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.role-btn {
+  background: var(--white);
+  border: 2px solid #d5d9e2;
+  border-radius: var(--radius);
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s, transform 0.1s;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.role-btn:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.role-btn.active {
+  border-color: var(--teal);
+  background: #eafaf5;
+  box-shadow: 0 0 0 3px rgba(22, 199, 154, 0.15);
+}
+
+.role-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.role-label {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+
+.role-sub {
+  font-size: 0.75rem;
+  color: var(--grey-text);
+}
+
+/* ---------- FORM FIELDS ---------- */
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 3px;
+  font-size: 0.85rem;
+}
+
+.form-group .required {
+  color: #e63946;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--grey-text);
+  background: var(--white);
+  border: 1.5px solid #d5d9e2;
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(22, 199, 154, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+/* ---------- SUBMIT BUTTON ---------- */
+.form-submit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 4px;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+}
+
+/* ---------- STATUS MESSAGE ---------- */
+.form-status {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-align: center;
+  display: none;
+}
+
+.form-status.success {
+  display: block;
+  background: #d4f5e8;
+  color: #0e7a5a;
+  border-left: 4px solid var(--teal-dark);
+}
+
+.form-status.error {
+  display: block;
+  background: #fde0e2;
+  color: #a42030;
+  border-left: 4px solid #e63946;
+}
+
+/* ---------- FOOTER LINK ---------- */
+.form-footer-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.95rem;
+  color: var(--grey-text);
+}
+
+.form-footer-link a {
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.form-footer-link a:hover {
+  color: var(--teal);
+}
+
+/* ============================================
+   CONFIRMATION MODAL
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 74, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal-box h2 {
+  color: var(--navy);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.modal-sub {
+  text-align: center;
+  color: var(--grey-text);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+.modal-summary {
+  background: var(--grey-light);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+
+.modal-summary .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e4eb;
+  gap: 16px;
+}
+
+.modal-summary .row:last-child {
+  border-bottom: none;
+}
+
+.modal-summary .label {
+  color: var(--grey-text);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.modal-summary .value {
+  color: var(--navy);
+  font-weight: 600;
+  text-align: right;
+  word-break: break-word;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-secondary-modal {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid #d5d9e2;
+  padding: 12px 26px;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-secondary-modal:hover {
+  border-color: var(--navy);
+  background: var(--grey-light);
+}
+
+/* ============================================
+   FLOATING FORM PAGE (Register page)
+   ============================================ */
+
+.floating-page {
+  position: relative;
+  min-height: calc(100vh - 76px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.floating-page-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 74, 0.6);
+  z-index: 1;
+}
+
+.floating-form-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 580px;
+}
+
+.floating-form-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px 32px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+}
+
+.floating-form-card h1 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.floating-form-card .form-intro {
+  text-align: center;
+  margin-bottom: 16px;
+  color: var(--grey-text);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 32px 22px;
+  }
+  .role-selector {
+    grid-template-columns: 1fr;
+  }
+  .modal-box {
+    padding: 28px 22px;
+  }
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+  .modal-actions button {
+    width: 100%;
+  }
+  .floating-page {
+    padding: 16px;
+  }
+  .floating-form-card {
+    padding: 20px 18px;
+  }
+}

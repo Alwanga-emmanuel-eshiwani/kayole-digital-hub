@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Kayole Digital Hub</title>
+  <meta name="description" content="Register your interest in the Kayole Digital Hub programmes.">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.jpeg" alt="Kayole Digital Hub logo" class="logo-img">
+        <span>Kayole Digital Hub</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html" class="btn-nav">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ REGISTER — FLOATING FORM ============ -->
+  <main class="floating-page" style="background-image: url('assets/images/register.jpg');">
+    <div class="floating-page-overlay"></div>
+
+    <section class="floating-form-wrapper">
+      <div class="floating-form-card">
+
+        <h1>Register Your Interest</h1>
+        <p class="form-intro">
+          Choose whether you are joining as a learner or supporting as a donor.
+        </p>
+
+        <!-- ROLE SELECTOR -->
+        <div class="role-selector">
+          <button type="button" class="role-btn active" data-role="student">
+            <span class="role-icon">🎓</span>
+            <span class="role-label">Student</span>
+            <span class="role-sub">Join a programme</span>
+          </button>
+          <button type="button" class="role-btn" data-role="donor">
+            <span class="role-icon">💚</span>
+            <span class="role-label">Donor</span>
+            <span class="role-sub">Support the Hub</span>
+          </button>
+        </div>
+
+        <form id="registrationForm" class="form">
+
+          <!-- Common fields -->
+          <div class="form-group">
+            <label for="full_name">Full Name <span class="required">*</span></label>
+            <input type="text" id="full_name" name="full_name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+254 7XX XXX XXX">
+          </div>
+
+          <!-- ===== STUDENT FIELDS ===== -->
+          <div id="studentFields">
+
+            <div class="form-group">
+              <label for="student_password">Create a password <span class="required">*</span></label>
+              <input type="password" id="student_password" name="student_password" minlength="8" placeholder="At least 8 characters">
+              <p style="font-size:0.75rem;color:#4a4a6a;margin-top:3px;">You'll use this to log in and track your applications.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="track">Which track are you applying for? <span class="required">*</span></label>
+              <select id="track" name="track">
+                <option value="">-- Select a track --</option>
+                <option value="Community Track">Community Track (Free — 4 weeks)</option>
+                <option value="Pro Track">Pro Track (Paid — 6 months)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender">
+                <option value="">-- Prefer not to say --</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="age_range">Age Range</label>
+              <select id="age_range" name="age_range">
+                <option value="">-- Select --</option>
+                <option value="Under 18">Under 18</option>
+                <option value="18-24">18–24</option>
+                <option value="25-34">25–34</option>
+                <option value="35-44">35–44</option>
+                <option value="45+">45+</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="motivation">Why do you want to join? (Briefly)</label>
+              <textarea id="motivation" name="motivation" rows="4"></textarea>
+            </div>
+          </div>
+
+          <!-- ===== DONOR FIELDS ===== -->
+          <div id="donorFields" style="display:none;">
+
+            <div class="form-group">
+              <label for="donor_password">Create a password <span class="required">*</span></label>
+              <input type="password" id="donor_password" name="donor_password" minlength="8" placeholder="At least 8 characters">
+              <p style="font-size:0.75rem;color:#4a4a6a;margin-top:3px;">You'll use this to log in and track your pledges.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="pledge_type">How would you like to support? <span class="required">*</span></label>
+              <select id="pledge_type" name="pledge_type">
+                <option value="">-- Select --</option>
+                <option value="One-time donation">One-time donation</option>
+                <option value="Monthly support">Monthly support</option>
+                <option value="Equipment sponsorship">Equipment sponsorship</option>
+                <option value="Scholarship for a learner">Scholarship for a learner</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="amount">Estimated amount (KES)</label>
+              <input type="number" id="amount" name="amount" placeholder="e.g. 50000">
+            </div>
+
+            <div class="form-group">
+              <label for="description">Anything specific you'd like to support?</label>
+              <textarea id="description" name="description" rows="4"></textarea>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-primary form-submit">Submit</button>
+
+          <!-- Status message -->
+          <p id="formStatus" class="form-status"></p>
+
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ CONFIRMATION MODAL ============ -->
+  <div id="confirmModal" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+      <h2>Confirm Your Details</h2>
+      <p class="modal-sub">Please review your information before submitting.</p>
+
+      <div id="modalSummary" class="modal-summary"></div>
+
+      <div class="modal-actions">
+        <button type="button" id="modalCancel" class="btn-secondary-modal">Go Back</button>
+        <button type="button" id="modalConfirm" class="btn-primary">Confirm &amp; Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+
+      <div class="footer-col">
+        <p class="footer-brand">Kayole Digital Hub</p>
+        <p>Bridging the Digital Divide Through Sustainable Technology Training.</p>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-heading">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-heading">Contact</p>
+        <ul class="footer-contact">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@kayoledigitalhub.co.ke">info@kayoledigitalhub.co.ke</a>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:0743747728">0743 747 728</a>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <a href="https://wa.me/254743747728" target="_blank" rel="noopener">WhatsApp</a>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <a href="https://instagram.com/kayoledigitalhub" target="_blank" rel="noopener">@kayoledigitalhub</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-heading">Author</p>
+        <p>Emmanuel Alwang'a Eshiwani</p>
+        <p>Student No: 221672</p>
+        <p>BSc. Computer Networks &amp; Cybersecurity</p>
+        <p>Strathmore University · September 2026</p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Kayole Digital Hub · All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="js/supabase.min.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/register.js"></script>
+
+</body>
+</html>

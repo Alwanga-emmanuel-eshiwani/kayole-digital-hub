@@ -13,76 +13,51 @@
   <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-
-  <!-- ============ NAVIGATION ============ -->
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <img src="assets/images/logo.jpeg" alt="Kayole Digital Hub logo" class="logo-img">
-        <span>Kayole Digital Hub</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#" id="logoutBtn" class="btn-nav">Logout</a></li>
-      </ul>
+      <a href="index.html" class="logo"><img src="assets/images/logo.jpeg" alt="Kayole Digital Hub logo" class="logo-img"><span>Kayole Digital Hub</span></a>
+      <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="#" id="logoutBtn" class="btn-nav">Logout</a></li></ul>
     </div>
   </nav>
 
-  <!-- ============ DASHBOARD ============ -->
   <main class="dashboard-page">
-    <div class="container" style="max-width:1100px;">
-
-      <!-- Header -->
+    <div class="container dashboard-container">
       <div class="dash-header">
-        <div>
-          <h1>Welcome, <span id="donorName">Donor</span></h1>
-          <p style="color:#4a4a6a;margin:0;">
-            Thank you for supporting the Kayole Digital Hub. Here you can track your pledges and see your impact.
-          </p>
-        </div>
+        <div><p class="section-kicker">Supporter dashboard</p><h1>Welcome, <span id="donorName">Donor</span></h1><p class="dash-subtitle">Thank you for supporting the Kayole Digital Hub. Here you can track your pledges and the support you are helping to provide.</p></div>
       </div>
 
-      <!-- Summary cards -->
       <div class="dash-stats">
-        <div class="dash-stat">
-          <div class="dash-stat-number" id="pledgeCount">0</div>
-          <div class="dash-stat-label">Active Pledges</div>
-        </div>
-        <div class="dash-stat">
-          <div class="dash-stat-number" id="totalAmount">KES 0</div>
-          <div class="dash-stat-label">Total Committed</div>
-        </div>
-        <div class="dash-stat">
-          <div class="dash-stat-number">100</div>
-          <div class="dash-stat-label">Learners Impacted</div>
-        </div>
+        <div class="dash-stat"><div class="dash-stat-number" id="pledgeCount">0</div><div class="dash-stat-label">Active pledges</div></div>
+        <div class="dash-stat"><div class="dash-stat-number" id="totalAmount">KES 0</div><div class="dash-stat-label">Total committed</div></div>
+        <div class="dash-stat"><div class="dash-stat-number">100</div><div class="dash-stat-label">Target learners / year</div></div>
+        <div class="dash-stat"><div class="dash-stat-number">24</div><div class="dash-stat-label">Planned workstations</div></div>
       </div>
 
-      <!-- Pledges list -->
-      <h2 style="margin-bottom:24px;">My Pledges</h2>
-      <div id="pledgesList">
-        <p style="color:#4a4a6a;">Loading...</p>
-      </div>
+      <section class="support-panel">
+        <p class="section-kicker">Your contribution</p>
+        <h2>Your Support</h2>
+        <p>Your contribution helps expand access to practical digital skills, learning equipment and opportunities for learners in Kayole Soweto.</p>
+      </section>
 
-      <!-- Cross-sell: become a student -->
+      <section class="dashboard-section-gap">
+        <div class="section-heading-row"><div><h2>My Pledges</h2><p>Review the support commitments linked to your account.</p></div></div>
+        <div id="pledgesList"><p class="dash-muted">Loading...</p></div>
+      </section>
+
       <div class="student-cta">
         <h2>Want to learn too?</h2>
-        <p>Enrol as a student and gain digital skills at the Hub. Sign up for the Community Track or Pro Track.</p>
+        <p>Enrol as a student and gain digital skills through the Community Track or Pro Track.</p>
         <a href="register.html" class="btn-primary">Enrol as a Student</a>
       </div>
-
     </div>
   </main>
 
-  <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="container footer-grid">
-
       <div class="footer-col">
         <p class="footer-brand">Kayole Digital Hub</p>
         <p>Bridging the Digital Divide Through Sustainable Technology Training.</p>
       </div>
-
       <div class="footer-col">
         <p class="footer-heading">Quick Links</p>
         <ul class="footer-links">
@@ -91,29 +66,15 @@
           <li><a href="login.html">Login</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <p class="footer-heading">Contact</p>
         <ul class="footer-contact">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:info@kayoledigitalhub.co.ke">info@kayoledigitalhub.co.ke</a>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:0743747728">0743 747 728</a>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-            <a href="https://wa.me/254743747728" target="_blank" rel="noopener">WhatsApp</a>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            <a href="https://instagram.com/kayoledigitalhub" target="_blank" rel="noopener">@kayoledigitalhub</a>
-          </li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@kayoledigitalhub.co.ke">info@kayoledigitalhub.co.ke</a></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 1 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:0743747728">0743 747 728</a></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><a href="https://wa.me/254743747728" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><a href="https://instagram.com/kayoledigitalhub" target="_blank" rel="noopener">@kayoledigitalhub</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <p class="footer-heading">Author</p>
         <p>Emmanuel Alwang'a Eshiwani</p>
@@ -121,17 +82,11 @@
         <p>BSc. Computer Networks &amp; Cybersecurity</p>
         <p>Strathmore University · September 2026</p>
       </div>
-
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Kayole Digital Hub · All rights reserved</p>
-    </div>
+    <div class="footer-bottom"><p>© 2026 Kayole Digital Hub · All rights reserved</p></div>
   </footer>
-
-  <!-- ============ SCRIPTS ============ -->
   <script src="js/supabase.min.js"></script>
   <script src="js/supabase-config.js"></script>
   <script src="js/donor-dashboard.js"></script>
-
 </body>
 </html>

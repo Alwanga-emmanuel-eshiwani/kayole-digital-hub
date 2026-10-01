@@ -40,7 +40,7 @@ body {
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1160px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -128,12 +128,50 @@ a:hover { color: var(--teal); }
   color: var(--white) !important;
 }
 
-/* ---------- 5. HERO ---------- */
+/* ---------- 5. HERO (3-image cross-fade slideshow) ---------- */
 .hero {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  position: relative;
+  overflow: hidden;
   color: var(--white);
   padding: 100px 0 120px;
   text-align: center;
+  background: var(--navy-deep);
+}
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 108, 0.82) 0%,
+    rgba(15, 15, 74, 0.88) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {
@@ -153,7 +191,7 @@ a:hover { color: var(--teal); }
 }
 
 .hero-sub {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.15rem;
   max-width: 640px;
   margin: 0 auto 40px;
@@ -207,21 +245,42 @@ a:hover { color: var(--teal); }
   background: var(--white);
 }
 
-.about .lead {
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+.about-image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+
+.about-text .lead {
   font-size: 1.15rem;
-  max-width: 800px;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
   color: var(--grey-text);
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
 }
 
 .about-item {
-  padding: 28px;
+  padding: 24px;
   background: var(--grey-light);
   border-radius: var(--radius);
   border-top: 4px solid var(--teal);
@@ -230,11 +289,11 @@ a:hover { color: var(--teal); }
 .about-item h3 {
   color: var(--navy);
   margin-bottom: 10px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .about-item p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--grey-text);
   margin-bottom: 0;
 }
@@ -301,16 +360,33 @@ a:hover { color: var(--teal); }
 
 .track-card {
   background: var(--white);
-  padding: 36px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   border-left: 5px solid var(--teal);
   transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
 }
 
 .track-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+}
+
+.track-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.track-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.track-body {
+  padding: 32px 36px 36px;
 }
 
 .track-card h3 {
@@ -348,22 +424,22 @@ a:hover { color: var(--teal); }
   margin-bottom: 32px;
 }
 
-/* ---------- 10. FOOTER ---------- */
+/* ---------- 10. FOOTER (4-column) ---------- */
 .footer {
   background: var(--navy-deep);
   color: var(--white);
-  padding: 50px 0 40px;
+  padding: 60px 0 0;
   font-size: 0.9rem;
 }
 
-.footer-container {
+.footer-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  align-items: start;
+  grid-template-columns: 1.4fr 1fr 1.2fr 1.4fr;
+  gap: 40px;
+  padding-bottom: 40px;
 }
 
-.footer p {
+.footer-col p {
   margin: 4px 0;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -372,10 +448,80 @@ a:hover { color: var(--teal); }
   color: var(--white) !important;
   font-weight: 700;
   font-size: 1.1rem;
-  margin-bottom: 8px !important;
+  margin-bottom: 10px !important;
+}
+
+.footer-heading {
+  color: var(--white) !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 14px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-links,
+.footer-contact {
+  list-style: none;
+}
+
+.footer-links li,
+.footer-contact li {
+  margin-bottom: 10px;
+}
+
+.footer-links a,
+.footer-contact a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: var(--teal);
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-contact svg {
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.85rem;
 }
 
 /* ---------- 11. RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-image img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
 @media (max-width: 700px) {
   .hero h1 { font-size: 2.2rem; }
   .hero { padding: 70px 0 80px; }
@@ -385,8 +531,8 @@ a:hover { color: var(--teal); }
   .logo-img { width: 36px; height: 36px; }
   h2 { font-size: 1.6rem; }
   .stat-number { font-size: 2.2rem; }
-  .footer-container { grid-template-columns: 1fr; text-align: center; }
   .about-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; text-align: left; gap: 28px; }
 }
 
 /* ---------- 12. THANK YOU PAGE ---------- */

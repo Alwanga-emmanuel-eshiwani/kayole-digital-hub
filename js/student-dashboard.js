@@ -1,41 +1,54 @@
 document.addEventListener('DOMContentLoaded', async () => {
-
   const { data: { session } } = await supabaseClient.auth.getSession();
+  if (!session) { window.location.href = 'login.html'; return; }
 
-  if (!session) {
-    window.location.href = 'login.html';
+  const email = session.user.email;
+  document.getElementById('userName').textContent = email.split('@')[0];
+
+  const { data: apps, error } = await supabaseClient.from('applications').select('*').eq('email', email).order('created_at', { ascending: false });
+  const list = document.getElementById('applicationsList');
+  const journeySteps = [...document.querySelectorAll('.journey-step')];
+
+  if (error) {
+    list.innerHTML = '<div class="donor-error">Could not load your application details. Please try again later.</div>';
     return;
   }
 
-  const email = session.user.email;
+  const applications = apps || [];
+  document.getElementById('applicationCount').textContent = applications.length;
 
-  document.getElementById('userName').textContent = email.split('@')[0];
+  if (applications.length > 0) {
+    const app = applications[0];
+    const status = (app.status || 'pending').toLowerCase();
+    document.getElementById('trackName').textContent = app.track || '—';
+    document.getElementById('statusText').textContent = status.replace(/\b\w/g, c => c.toUpperCase());
 
-  const { data: apps } = await supabaseClient
-    .from('applications')
-    .select('*')
-    .eq('email', email);
+    let currentStep = 2;
+    if (['confirmed','enrolled'].includes(status)) currentStep = 3;
+    if (['completed','learning','active'].includes(status)) currentStep = 4;
+    journeySteps.forEach((step, index) => {
+      const number = index + 1;
+      step.classList.toggle('active', number <= currentStep);
+      step.classList.toggle('current', number === currentStep);
+    });
 
-  document.getElementById('applicationCount').textContent = apps?.length || 0;
-
-  if (apps && apps.length > 0) {
-    document.getElementById('trackName').textContent = apps[0].track || '—';
-    document.getElementById('applicationsList').innerHTML = apps.map(a => `
-      <div class="track-card" style="margin-bottom:16px;">
-        <h3>${a.track}</h3>
-        <p class="track-meta">Submitted: ${new Date(a.created_at).toLocaleDateString()}</p>
-        <p>Status: <strong>Pending review</strong></p>
-      </div>
-    `).join('');
+    list.innerHTML = applications.map(a => `
+      <div class="pledge-card application-card">
+        <h3>${escapeHtml(a.track || 'Programme application')}</h3>
+        <p class="pledge-status">${escapeHtml(a.status || 'Pending review')}</p>
+        <p class="pledge-description">Submitted on ${new Date(a.created_at).toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'})}.</p>
+        ${a.motivation ? `<p class="pledge-description">${escapeHtml(a.motivation)}</p>` : ''}
+      </div>`).join('');
   } else {
-    document.getElementById('applicationsList').innerHTML =
-      '<p>You have no applications yet. <a href="register.html">Register here</a>.</p>';
+    document.getElementById('trackName').textContent = '—';
+    document.getElementById('statusText').textContent = 'Not applied';
+    journeySteps.forEach(step => step.classList.remove('active','current'));
+    list.innerHTML = '<div class="dash-empty"><h3>No application yet</h3><p>You have no applications yet. <a href="register.html">Register here</a>.</p></div>';
   }
 
   document.getElementById('logoutBtn').addEventListener('click', async (e) => {
-    e.preventDefault();
-    await supabaseClient.auth.signOut();
-    window.location.href = 'index.html';
+    e.preventDefault(); await supabaseClient.auth.signOut(); window.location.href = 'index.html';
   });
 
+  function escapeHtml(text) { const div=document.createElement('div'); div.textContent=text==null?'':String(text); return div.innerHTML; }
 });

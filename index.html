@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/enhancements.css">
 </head>
 <body>
 
@@ -21,7 +22,7 @@
         <span>Kayole Digital Hub</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#tracks">Programmes</a></li>
         <li><a href="register.html">Register</a></li>
@@ -30,8 +31,13 @@
     </div>
   </nav>
 
-  <!-- ============ HERO ============ -->
-  <header class="hero hero-image">
+  <!-- ============ HERO (3-image cross-fade slideshow) ============ -->
+  <header class="hero">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image: url('assets/images/hero.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/images/hero-2.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/images/hero-3.jpg');"></div>
+    </div>
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <p class="tagline">EARN • EMPOWER • SUSTAIN</p>
@@ -48,36 +54,68 @@
   </header>
 
   <!-- ============ ABOUT ============ -->
-  <section id="about" class="about">
+  <section id="about" class="about about-showcase">
     <div class="container">
-      <h2>About the Hub</h2>
-      <div class="about-layout">
-        <div class="about-image">
-          <img src="assets/images/about.jpg" alt="Learners at the Kayole Digital Hub">
+      <div class="about-heading reveal-item">
+        <div>
+          <p class="section-kicker">Inside the Hub</p>
+          <h2>About the Hub</h2>
         </div>
-        <div class="about-text">
+        <p class="about-heading-note">A practical space where access, skills and opportunity come together for the community.</p>
+      </div>
+
+      <div class="about-showcase-grid">
+        <div class="about-video-card reveal-item">
+          <div class="about-video-heading">
+            <div>
+              <span class="about-video-kicker">See the vision in action</span>
+              <h3>Digital skills, opportunity and community</h3>
+            </div>
+            <span class="about-play-badge" aria-hidden="true">▶</span>
+          </div>
+          <div class="about-video-frame">
+            <video class="hub-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/about.jpg" aria-label="Kayole Digital Hub video">
+              <source src="assets/videos/videos.mp4" type="video/mp4">
+              Your browser does not support the video element.
+            </video>
+            <div class="video-live-badge"><span></span> Hub in action</div>
+          </div>
+          <div class="video-caption">
+            <span>Continuous preview</span>
+            <small>Video plays automatically and loops continuously.</small>
+          </div>
+        </div>
+
+        <div class="about-content-panel reveal-item">
           <p class="lead">
-            The Kayole Digital Hub is designed to close the growing gap between
-            digital technology and the ability of low-income communities to access,
-            understand, and use it.
+            The Kayole Digital Hub is designed to close the growing gap between digital technology and the ability of low-income communities to access, understand, and use it.
           </p>
-          <div class="about-grid">
-            <div class="about-item">
-              <h3>Affordable Access</h3>
-              <p>20 student workstations and 4 staff stations, available to the community at low cost.</p>
-            </div>
-            <div class="about-item">
-              <h3>Structured Training</h3>
-              <p>A dual-track model combining free foundation courses with paid professional programmes.</p>
-            </div>
-            <div class="about-item">
-              <h3>Future-Ready Skills</h3>
-              <p>Hands-on exposure to AI, cybersecurity, networking, and digital entrepreneurship.</p>
-            </div>
-            <div class="about-item">
-              <h3>Sustainable Model</h3>
-              <p>A social enterprise designed to achieve full self-sufficiency by Year 2.</p>
-            </div>
+
+          <div class="about-feature-list" data-about-rotation>
+            <button type="button" class="about-feature is-active" data-about-feature="0">
+              <span class="about-feature-number">01</span>
+              <span class="about-feature-copy"><strong>Affordable Access</strong><span>20 student workstations and 4 staff stations, available to the community at low cost.</span></span>
+              <span class="about-feature-arrow" aria-hidden="true">→</span>
+              <span class="about-feature-progress" aria-hidden="true"><i></i></span>
+            </button>
+            <button type="button" class="about-feature" data-about-feature="1">
+              <span class="about-feature-number">02</span>
+              <span class="about-feature-copy"><strong>Structured Training</strong><span>A dual-track model combining free foundation courses with paid professional programmes.</span></span>
+              <span class="about-feature-arrow" aria-hidden="true">→</span>
+              <span class="about-feature-progress" aria-hidden="true"><i></i></span>
+            </button>
+            <button type="button" class="about-feature" data-about-feature="2">
+              <span class="about-feature-number">03</span>
+              <span class="about-feature-copy"><strong>Future-Ready Skills</strong><span>Hands-on exposure to AI, cybersecurity, networking, and digital entrepreneurship.</span></span>
+              <span class="about-feature-arrow" aria-hidden="true">→</span>
+              <span class="about-feature-progress" aria-hidden="true"><i></i></span>
+            </button>
+            <button type="button" class="about-feature" data-about-feature="3">
+              <span class="about-feature-number">04</span>
+              <span class="about-feature-copy"><strong>Sustainable Model</strong><span>A social enterprise designed to achieve full self-sufficiency by Year 2.</span></span>
+              <span class="about-feature-arrow" aria-hidden="true">→</span>
+              <span class="about-feature-progress" aria-hidden="true"><i></i></span>
+            </button>
           </div>
         </div>
       </div>
@@ -87,24 +125,50 @@
   <!-- ============ IMPACT ============ -->
   <section class="impact">
     <div class="container">
-      <h2>Expected Impact</h2>
-      <div class="stats-grid">
-        <div class="stat">
-          <div class="stat-number">24</div>
-          <div class="stat-label">Workstations</div>
+      <div class="impact-heading">
+        <div><p class="section-kicker">Projected Outcomes</p><h2>Expected Impact</h2></div>
+        <p class="impact-note">These figures are planning targets for the Hub's initial operating model, not historical results.</p>
+      </div>
+      <div class="stats-grid reveal-group">
+        <div class="stat reveal-item">
+          <div class="stat-icon" aria-hidden="true">▦</div>
+          <div class="stat-number" data-count="24">0</div>
+          <div class="stat-label">Planned workstations</div>
+          <p class="stat-note">Centre capacity</p>
         </div>
-        <div class="stat">
-          <div class="stat-number">100</div>
-          <div class="stat-label">Learners / year</div>
+        <div class="stat reveal-item">
+          <div class="stat-icon" aria-hidden="true">♧</div>
+          <div class="stat-number" data-count="100">0</div>
+          <div class="stat-label">Target learners / year</div>
+          <p class="stat-note">Annual target</p>
         </div>
-        <div class="stat">
-          <div class="stat-number">50%</div>
-          <div class="stat-label">Female participation</div>
+        <div class="stat reveal-item">
+          <div class="stat-icon" aria-hidden="true">◉</div>
+          <div class="stat-number" data-count="50" data-suffix="%">0%</div>
+          <div class="stat-label">Target female participation</div>
+          <p class="stat-note">Annual target</p>
         </div>
-        <div class="stat">
-          <div class="stat-number">40%</div>
-          <div class="stat-label">Graduate employment</div>
+        <div class="stat reveal-item">
+          <div class="stat-icon" aria-hidden="true">↗</div>
+          <div class="stat-number" data-count="40" data-suffix="%">0%</div>
+          <div class="stat-label">Target graduate employment</div>
+          <p class="stat-note">Programme target</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW THE HUB WORKS ============ -->
+  <section class="how-section">
+    <div class="container">
+      <p class="section-kicker">From interest to opportunity</p>
+      <h2>How the Hub Works</h2>
+      <p class="section-intro">A simple pathway designed to help learners and supporters move from registration to meaningful participation.</p>
+      <div class="process-grid reveal-group">
+        <div class="process-step reveal-item"><div class="process-number">01</div><div class="process-marker">↳</div><h3>Register</h3><p>Tell us whether you are joining as a learner or supporting as a donor.</p></div>
+        <div class="process-step reveal-item"><div class="process-number">02</div><div class="process-marker">⌁</div><h3>Get Started</h3><p>Learners choose a programme while supporters choose how they would like to contribute.</p></div>
+        <div class="process-step reveal-item"><div class="process-number">03</div><div class="process-marker">✦</div><h3>Learn &amp; Participate</h3><p>Build practical digital skills through structured training, projects and guided support.</p></div>
+        <div class="process-step reveal-item"><div class="process-number">04</div><div class="process-marker">↗</div><h3>Grow &amp; Give Back</h3><p>Use new skills to pursue opportunities, build businesses and strengthen the community.</p></div>
       </div>
     </div>
   </section>
@@ -117,8 +181,8 @@
         Every learner enters through one of two programmes designed to meet
         them where they are.
       </p>
-      <div class="tracks-grid">
-        <div class="track-card">
+      <div class="tracks-grid reveal-group">
+        <div class="track-card reveal-item">
           <div class="track-image">
             <img src="assets/images/community-track.jpg" alt="Community Track learners">
           </div>
@@ -130,7 +194,7 @@
                digital tools.</p>
           </div>
         </div>
-        <div class="track-card">
+        <div class="track-card reveal-item">
           <div class="track-image">
             <img src="assets/images/pro-track.jpg" alt="Pro Track learners">
           </div>
@@ -145,24 +209,48 @@
     </div>
   </section>
 
+  <!-- ============ AI & ROBOTICS ============ -->
+  <section class="ai-section">
+    <div class="container">
+      <div class="ai-heading reveal-item">
+        <div><p class="section-kicker">Future-ready technology</p><h2>AI &amp; Robotics</h2></div>
+        <p class="section-intro">The Hub introduces learners to emerging technologies that are shaping modern work, business and community services.</p>
+      </div>
+      <div class="ai-feature reveal-group">
+        <div class="ai-visual reveal-item">
+          <img src="assets/images/pro-track.jpg" alt="Learner exploring technology in a digital environment">
+          <div class="ai-visual-overlay">
+            <span class="ai-live-dot"></span> Practical technology exposure
+          </div>
+        </div>
+        <div class="ai-grid reveal-group">
+          <div class="ai-card reveal-item"><div class="ai-icon">AI</div><h3>Artificial Intelligence</h3><p>Explore practical AI tools, concepts and responsible everyday use.</p></div>
+          <div class="ai-card reveal-item"><div class="ai-icon">R</div><h3>Robotics</h3><p>Understand how intelligent software can interact with physical systems.</p></div>
+          <div class="ai-card reveal-item"><div class="ai-icon">A</div><h3>Automation</h3><p>See how digital systems can improve productivity, services and workflows.</p></div>
+          <div class="ai-card reveal-item"><div class="ai-icon">F</div><h3>Future Skills</h3><p>Develop adaptable skills for emerging careers and technology-driven businesses.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CALL TO ACTION ============ -->
   <section class="cta">
     <div class="container">
+      <div class="cta-panel reveal-item">
       <h2>Ready to get started?</h2>
       <p>Register your interest today — it takes less than 2 minutes.</p>
       <a href="register.html" class="btn-primary">Register Now</a>
+      </div>
     </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="container footer-grid">
-
       <div class="footer-col">
         <p class="footer-brand">Kayole Digital Hub</p>
         <p>Bridging the Digital Divide Through Sustainable Technology Training.</p>
       </div>
-
       <div class="footer-col">
         <p class="footer-heading">Quick Links</p>
         <ul class="footer-links">
@@ -171,29 +259,15 @@
           <li><a href="login.html">Login</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <p class="footer-heading">Contact</p>
         <ul class="footer-contact">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:info@kayoledigitalhub.co.ke">info@kayoledigitalhub.co.ke</a>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:0743747728">0743 747 728</a>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-            <a href="https://wa.me/254743747728" target="_blank" rel="noopener">WhatsApp</a>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            <a href="https://instagram.com/kayoledigitalhub" target="_blank" rel="noopener">@kayoledigitalhub</a>
-          </li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@kayoledigitalhub.co.ke">info@kayoledigitalhub.co.ke</a></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 1 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:0743747728">0743 747 728</a></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><a href="https://wa.me/254743747728" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><a href="https://instagram.com/kayoledigitalhub" target="_blank" rel="noopener">@kayoledigitalhub</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <p class="footer-heading">Author</p>
         <p>Emmanuel Alwang'a Eshiwani</p>
@@ -201,16 +275,29 @@
         <p>BSc. Computer Networks &amp; Cybersecurity</p>
         <p>Strathmore University · September 2026</p>
       </div>
-
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Kayole Digital Hub · All rights reserved</p>
-    </div>
+    <div class="footer-bottom"><p>© 2026 Kayole Digital Hub · All rights reserved</p></div>
   </footer>
 
   <!-- ============ SCRIPTS ============ -->
   <script src="js/supabase.min.js"></script>
   <script src="js/supabase-config.js"></script>
+  <script src="js/site-enhancements.js"></script>
+
+  <!-- Hero slideshow — cross-fade every 5s -->
+  <script>
+    (function () {
+      const slides = document.querySelectorAll('.hero-slide');
+      if (slides.length < 2) return;
+
+      let current = 0;
+      setInterval(function () {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 5000);
+    })();
+  </script>
 
 </body>
 </html>

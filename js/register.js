@@ -30,15 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
       currentRole = btn.dataset.role;
 
       if (currentRole === 'donor') {
-        studentFields.style.display = 'none';
-        donorFields.style.display = 'block';
+        studentFields.classList.add('hidden');
+        donorFields.classList.remove('hidden');
         document.getElementById('track').removeAttribute('required');
         document.getElementById('student_password').removeAttribute('required');
         document.getElementById('pledge_type').setAttribute('required', 'required');
         document.getElementById('donor_password').setAttribute('required', 'required');
       } else {
-        studentFields.style.display = 'block';
-        donorFields.style.display = 'none';
+        studentFields.classList.remove('hidden');
+        donorFields.classList.add('hidden');
         document.getElementById('track').setAttribute('required', 'required');
         document.getElementById('student_password').setAttribute('required', 'required');
         document.getElementById('pledge_type').removeAttribute('required');
@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     status.className = 'form-status';
     status.textContent = '';
-    status.style.display = 'none';
 
     const fullName = form.full_name.value.trim();
     const email = form.email.value.trim();
@@ -144,12 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
 
-    modal.style.display = 'flex';
+    modal.classList.remove('hidden');
   });
 
   /* ---------- 3. CANCEL ---------- */
   modalCancel.addEventListener('click', () => {
-    modal.style.display = 'none';
+    modal.classList.add('hidden');
     pendingSubmission = null;
   });
 
@@ -157,13 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
   modalConfirm.addEventListener('click', async () => {
     if (!pendingSubmission) return;
 
-    modal.style.display = 'none';
-    status.className = 'form-status';
+    modal.classList.add('hidden');
+    status.className = 'form-status visible';
     status.textContent = 'Submitting...';
-    status.style.display = 'block';
 
     try {
-      // Step 1: Create auth account for BOTH roles
+      /* ----- Step 1: Create auth account for BOTH roles ----- */
       const { error: authError } = await supabaseClient.auth.signUp({
         email: pendingSubmission.email,
         password: pendingSubmission.password,
@@ -175,11 +173,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      if (authError && !authError.message.toLowerCase().includes('already')) {
+      /* ----- Duplicate email handling ----- */
+      if (authError) {
+        const msg = (authError.message || '').toLowerCase();
+        const isDuplicate =
+          msg.includes('already registered') ||
+          msg.includes('already exists') ||
+          msg.includes('user already');
+
+        if (isDuplicate) {
+          status.className = 'form-status error';
+          status.innerHTML =
+            'An account with this email already exists. ' +
+            'Please <a href="login.html" class="form-status-link">log in</a> instead.';
+          pendingSubmission = null;
+          return;
+        }
+
+        // Any other auth error — surface it and stop
         throw authError;
       }
 
-      // Step 2: Insert the row into the correct table
+      /* ----- Step 2: Insert the row into the correct table ----- */
       if (pendingSubmission.type === 'student') {
         const { error } = await supabaseClient
           .from('applications')
@@ -192,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (error) throw error;
       }
 
-      // Step 3: Sign out so they can log in properly
+      /* ----- Step 3: Sign out so they can log in properly ----- */
       await supabaseClient.auth.signOut();
 
       status.className = 'form-status success';

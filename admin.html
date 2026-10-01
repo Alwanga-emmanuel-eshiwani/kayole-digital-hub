@@ -25,7 +25,7 @@
 <body class="admin-guarded">
 
   <!-- ============ NAVIGATION ============ -->
-  <nav class="navbar">
+  <nav class="navbar admin-navbar">
     <div class="container nav-container">
       <a href="index.html" class="logo">
         <img src="assets/images/logo.jpeg" alt="Kayole Digital Hub logo" class="logo-img">
@@ -33,8 +33,8 @@
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#tracks">Programmes</a></li>
+        <li class="admin-nav-secondary"><a href="#about">About</a></li>
+        <li class="admin-nav-secondary"><a href="#tracks">Programmes</a></li>
         <li><a href="register.html">Register</a></li>
         <li><a href="login.html" class="btn-nav">Login</a></li>
       </ul>
@@ -112,10 +112,15 @@
           <option value="Community Track">Community Track</option>
           <option value="Pro Track">Pro Track</option>
         </select>
-        <button id="exportBtn" class="btn-secondary-modal">Export CSV</button>
+        <div class="dash-export-actions"><button id="exportBtn" class="btn-secondary-modal" type="button">Export CSV</button><button id="exportPdfBtn" class="btn-secondary-modal" type="button">Export PDF</button></div>
       </div>
 
       <!-- Table -->
+      <div class="dash-print-heading" aria-hidden="true">
+        <h2 id="printTitle">Student Applications</h2>
+        <p id="printMeta"></p>
+      </div>
+      <div id="statusNotice" class="admin-status-notice" role="status" aria-live="polite"></div>
       <div class="dash-table-wrapper">
         <table id="dataTable" class="dash-table">
           <thead id="tableHead"></thead>

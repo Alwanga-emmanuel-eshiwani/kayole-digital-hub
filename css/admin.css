@@ -130,3 +130,188 @@
   .dash-tab { white-space: nowrap; }
   .support-panel, .student-cta { padding: 22px; }
 }
+
+/* ============================================
+   ADMIN DASHBOARD — V4 responsive + export UI
+   ============================================ */
+.dash-export-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.dash-export-actions .btn-secondary-modal { min-height: 42px; white-space: nowrap; }
+.admin-status-notice { display: none; margin: 0 0 16px; padding: 11px 14px; border-radius: 9px; font-size: .84rem; font-weight: 600; }
+.admin-status-notice.visible { display: block; }
+.admin-status-notice.success { background: #e9faf4; color: #0e7a5a; border: 1px solid #a8e8d1; }
+.admin-status-notice.error { background: #fff0f1; color: #a42030; border: 1px solid #f0b9bf; }
+.dash-load-error { display: grid; gap: 6px; justify-items: center; }
+.dash-load-error strong { color: var(--navy); }
+.dash-load-error span { color: #a42030; font-size: .82rem; }
+.dash-print-heading { display: none; }
+
+@media (max-width: 900px) {
+  .dash-header { align-items: stretch; }
+  .dash-header > .btn-secondary-modal { align-self: flex-start; }
+  .dash-table-wrapper { border-radius: 12px; }
+}
+
+@media (max-width: 700px) {
+  .dashboard-page { padding-top: 30px; }
+  .dash-header { gap: 14px; margin-bottom: 24px; }
+  .dash-header > .btn-secondary-modal { width: 100%; }
+  .dash-stats { gap: 10px; margin-bottom: 28px; }
+  .dash-stat { padding: 18px 16px; }
+  .dash-stat-number { font-size: 1.55rem; }
+  .dash-tabs { margin-bottom: 16px; padding-bottom: 1px; }
+  .dash-tab { flex: 1; padding: 12px 10px; text-align: center; }
+  .dash-filters { gap: 8px; margin-bottom: 14px; }
+  .dash-filters input { min-width: 0; }
+  .dash-export-actions { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+  .dash-export-actions .btn-secondary-modal { width: 100%; }
+
+  /* Turn the wide desktop table into readable touch-friendly record cards. */
+  .dash-table-wrapper { overflow: visible; background: transparent; box-shadow: none; }
+  .dash-table { min-width: 0; width: 100%; border-collapse: separate; border-spacing: 0; font-size: .86rem; }
+  .dash-table thead { display: none; }
+  .dash-table tbody { display: grid; gap: 12px; }
+  .dash-table tbody tr { display: block; background: var(--white); border: 1px solid #e7e9ef; border-radius: 12px; box-shadow: var(--shadow-sm); overflow: hidden; }
+  .dash-table tbody tr:hover { background: var(--white); }
+  .dash-table tbody td { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px; align-items: center; padding: 11px 13px; border-bottom: 1px solid #eef1f6; min-width: 0; text-align: left; }
+  .dash-table tbody td:last-child { border-bottom: 0; }
+  .dash-table tbody td::before { content: attr(data-label); color: var(--grey-muted); font-size: .68rem; font-weight: 800; letter-spacing: .45px; text-transform: uppercase; }
+  .dash-table tbody td > * { min-width: 0; }
+  .dash-table tbody td[data-label="Name"], .dash-table tbody td[data-label="Donor Name"] { font-weight: 700; color: var(--navy); }
+  .dash-table tbody td[data-label="Email"] { overflow-wrap: anywhere; }
+  .dash-table tbody td[data-label="Status"] .status-select { width: 100%; min-width: 0; min-height: 40px; font-size: .8rem; }
+  .dash-table tbody td[data-label="Contact"] { padding-top: 10px; padding-bottom: 12px; }
+  .contact-actions { justify-content: flex-start; }
+  .contact-btn { width: 38px; height: 38px; }
+  .dash-empty { background: var(--white); border-radius: 12px; border: 1px solid #e7e9ef; }
+}
+
+@media (max-width: 430px) {
+  .dash-stats { grid-template-columns: 1fr 1fr; }
+  .dash-stat { padding: 16px 12px; }
+  .dash-stat-number { font-size: 1.35rem; }
+  .dash-stat-label { font-size: .74rem; line-height: 1.25; }
+  .dash-export-actions { grid-template-columns: 1fr; }
+  .dash-table tbody td { grid-template-columns: 82px minmax(0, 1fr); padding-left: 11px; padding-right: 11px; }
+}
+
+/* Browser print / Save as PDF */
+@media print {
+  @page { size: A4 landscape; margin: 12mm; }
+  html, body { background: #fff !important; }
+  body { visibility: visible !important; color: #111 !important; }
+  .navbar, #loginView, .footer, .dash-header > .btn-secondary-modal, .dash-tabs, .dash-filters, .admin-status-notice, .contact-actions { display: none !important; }
+  #dashboardView { display: block !important; min-height: 0; padding: 0; background: #fff; }
+  #dashboardView > .container { max-width: none; padding: 0; }
+  .dash-header { margin: 0; }
+  .dash-stats { grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 16px; }
+  .dash-stat { box-shadow: none; border: 1px solid #ddd; padding: 12px; }
+  .dash-stat-number { font-size: 1.25rem; }
+  .dash-print-heading { display: block; margin-bottom: 12px; }
+  .dash-print-heading h2 { margin: 0 0 4px; font-size: 18px; }
+  .dash-print-heading p { margin: 0; color: #555; font-size: 9pt; }
+  .dash-table-wrapper { overflow: visible; box-shadow: none; border: 1px solid #ddd; border-radius: 0; }
+  .dash-table { min-width: 0; font-size: 8.5pt; }
+  .dash-table th { padding: 7px 6px; }
+  .dash-table td { padding: 7px 6px; }
+  .status-select { appearance: none; -webkit-appearance: none; border: 0 !important; background: transparent !important; padding: 0 !important; min-width: 0; color: #111 !important; box-shadow: none !important; font-size: 8.5pt; }
+  .dash-table tbody tr:hover { background: transparent; }
+  .dash-table tbody td::before { display: none; }
+}
+
+
+/* ============================================
+   ADMIN MOBILE POLISH — clean, touch-first layout
+   ============================================ */
+.admin-navbar .nav-links { flex-wrap: nowrap; }
+
+@media (max-width: 760px) {
+  .admin-navbar { padding: 10px 0; }
+  .admin-navbar .nav-container { display: grid; grid-template-columns: 1fr auto; gap: 9px 12px; align-items: center; }
+  .admin-navbar .logo { min-width: 0; font-size: .98rem; }
+  .admin-navbar .logo-img { width: 36px; height: 36px; }
+  .admin-navbar .nav-links {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    padding: 0;
+    margin: 0;
+  }
+  .admin-navbar .nav-links li { min-width: 0; }
+  .admin-navbar .nav-links li.admin-nav-secondary { display: none; }
+  .admin-navbar .nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 7px 8px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 8px;
+    font-size: .78rem;
+    white-space: nowrap;
+  }
+  .admin-navbar .nav-links .btn-nav { border-color: transparent; }
+
+  .dashboard-page { padding: 24px 0 44px; }
+  .dashboard-container { width: 100%; }
+  .dash-header { margin-bottom: 20px; gap: 12px; }
+  .dash-header h1 { font-size: 1.55rem; }
+  .dash-subtitle { font-size: .86rem; line-height: 1.5; }
+  .dash-header > .btn-secondary-modal { min-height: 42px; }
+
+  .dash-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 22px; }
+  .dash-stat { min-width: 0; padding: 16px 13px; border-radius: 10px; }
+  .dash-stat-number { font-size: 1.35rem; overflow-wrap: anywhere; }
+  .dash-stat-label { font-size: .72rem; line-height: 1.3; }
+
+  .dash-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 4px;
+    margin: 0 0 14px;
+    border: 1px solid #e0e4eb;
+    border-radius: 10px;
+    background: #f4f6f9;
+    overflow: visible;
+  }
+  .dash-tab { min-height: 42px; padding: 9px 10px; border-radius: 7px; font-size: .84rem; }
+  .dash-tab::after { display: none; }
+  .dash-tab.active { background: var(--white); box-shadow: 0 1px 4px rgba(15,15,74,.10); }
+
+  .dash-filters { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 14px; }
+  .dash-filters input, .dash-filters select { width: 100%; min-height: 44px; box-sizing: border-box; }
+  .dash-export-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+  .dash-export-actions .btn-secondary-modal { width: 100%; min-height: 44px; padding: 9px 10px; font-size: .82rem; }
+
+  .admin-status-notice { margin-bottom: 12px; font-size: .8rem; line-height: 1.45; }
+
+  .dash-table-wrapper { margin-top: 0; }
+  .dash-table tbody { gap: 10px; }
+  .dash-table tbody tr { border-radius: 10px; }
+  .dash-table tbody td { grid-template-columns: 76px minmax(0,1fr); gap: 8px; padding: 10px 11px; font-size: .82rem; line-height: 1.35; }
+  .dash-table tbody td::before { font-size: .62rem; letter-spacing: .35px; }
+  .dash-table tbody td[data-label="Status"] { align-items: stretch; }
+  .dash-table tbody td[data-label="Status"] .status-select { min-height: 42px; font-size: .78rem; }
+  .dash-table tbody td[data-label="Contact"] { grid-template-columns: 76px minmax(0,1fr); }
+  .contact-actions { gap: 8px; }
+  .contact-btn { width: 38px; height: 38px; }
+}
+
+@media (max-width: 430px) {
+  .container { padding-left: 14px; padding-right: 14px; }
+  .admin-navbar .logo span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dash-stats { gap: 8px; }
+  .dash-stat { padding: 14px 10px; }
+  .dash-stat-number { font-size: 1.22rem; }
+  .dash-stat-label { font-size: .68rem; }
+  .dash-export-actions { grid-template-columns: 1fr; }
+  .dash-table tbody td { grid-template-columns: 70px minmax(0,1fr); padding-left: 10px; padding-right: 10px; }
+}
+
+@media (max-width: 360px) {
+  .admin-navbar .nav-links a { font-size: .72rem; padding-left: 5px; padding-right: 5px; }
+  .dash-header h1 { font-size: 1.4rem; }
+  .dash-table tbody td { grid-template-columns: 64px minmax(0,1fr); }
+}
